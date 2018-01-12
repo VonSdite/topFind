@@ -168,9 +168,12 @@ def main():
     while True:
         getInfo()
 
-        if questions[-1].find('12.') != -1 and len(questions) == len(options):
-            print('本次直播结束')
-            break
+        try:
+            if questions[-1].find('12.') != -1 and len(questions) == len(options):
+                print('本次直播结束')
+                break
+        except:
+            pass
 
 
 if __name__ == '__main__':
