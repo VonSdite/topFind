@@ -101,7 +101,7 @@ def getInfo():
                     questions.append(question)
                     print(question)              # 显示题目
                     print("选项: ")
-                    print(" ".join(option))      # 显示选项
+                    print(*option)      # 显示选项
 
                     # 开线程去自动搜索
                     threading.Thread(target=searchAnswer,
@@ -152,11 +152,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # qu = '公认的世界上第一辆现代汽车是谁造出来并申请专利的'
-    # di = {"尼考罗斯·奥托", "卡尔·本茨", "威廉姆斯·戴姆勒"}
-    # qu = search_url+'?wd='+qu
-    # res = requests.get(url=qu, headers=headers).text
-    # # print(res.count(di[0]))
-    # # print(res.count(di[1]))
-    # # print(res.count(di[2]))
-
