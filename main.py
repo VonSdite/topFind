@@ -151,17 +151,5 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    print('Waiting for question')
-
-    threading.Thread(target=openWeb).start()
-
-    time.sleep(8)
-
-    qu = '公认的世界上第一辆现代汽车是谁造出来并申请专利的？'
-    op = ["尼考罗斯·奥托", "卡尔·本茨", "威廉姆斯·戴姆勒"]
-    print(qu)
-    print(" ".join(op))
-    threading.Thread(target=searchAnswer,
-                                     args=(qu, )).start()
-    time.sleep(20)
+    main()
+ 
