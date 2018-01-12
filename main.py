@@ -68,7 +68,7 @@ def savePrefix():
 def save(question, option, answer):
     with open('record.txt', 'a', encoding='utf-8') as f:
         f.write(question + '\n')
-        f.write(' '.join(option))
+        f.write(" ".join(option))
         f.write('\n答案: %s\n' % str(answer))
 
 
@@ -84,13 +84,13 @@ def getInfo():
     try:
         resp = requests.get(url=source_url, headers=headers, timeout=4).text
         try:
-            resp_dict = json.loads(resp)    # 解析json
+            resp_dict = eval(str(resp))    # 解析json
             if resp_dict['msg'] != 'no data':
                 # 获取题目
                 question = resp_dict['data']['event'].get('desc', None)
 
                 # 获取选项
-                option = resp_dict['data']['event'].get('options', None)
+                option = eval(resp_dict['data']['event'].get('options', None))
 
                 # 获取正确选项
                 correct_option = resp_dict['data'][
@@ -116,7 +116,7 @@ def getInfo():
                         print('正确答案: ' + str(correct_answer))
 
                         threading.Thread(target=save, args=(
-                            question, option, correct_option)).start()  # 保存到文件
+                            question, option, correct_answer)).start()  # 保存到文件
 
                         print('\nWaiting for new question')
 
@@ -152,4 +152,11 @@ def main():
 
 if __name__ == '__main__':
     main()
- 
+    # qu = '公认的世界上第一辆现代汽车是谁造出来并申请专利的'
+    # di = {"尼考罗斯·奥托", "卡尔·本茨", "威廉姆斯·戴姆勒"}
+    # qu = search_url+'?wd='+qu
+    # res = requests.get(url=qu, headers=headers).text
+    # # print(res.count(di[0]))
+    # # print(res.count(di[1]))
+    # # print(res.count(di[2]))
+
